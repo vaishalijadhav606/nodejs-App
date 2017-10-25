@@ -42,7 +42,8 @@ apiRoutes.post('/signup', function(req, res){
       if (err) {
         res.json({success: false, msg: 'Username already exists.'});
       } else{
-      res.json({success: true, msg: 'Successful created new user.'});
+      	var token = jwt.encode(newUser, config.secret);
+      res.json({success: true, msg: 'Successful created new user.', token: 'JWT ' + token});
   	  }	
   	});
   }
